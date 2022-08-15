@@ -34,12 +34,15 @@ dns:
 proxies:
 proxy-providers:
   Server:
-    type: file
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/server.yaml"
     path: "./server.yaml"
     health-check:
       enable: true
+      interval: 99
       url: http://www.gstatic.com/generate_204
-      interval: 300
+    interval: "300"
 proxy-groups:
 - name: ADS
   type: select
