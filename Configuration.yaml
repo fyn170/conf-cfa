@@ -102,7 +102,7 @@ rule-providers:
     path: "./reject.yaml"
   Sosmed:
     type: http
-    behavior: domain
+    behavior: classical
     url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/sosmed.yaml"
     path: "./sosmed.yaml"
   Stream:
