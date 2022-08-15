@@ -1,0 +1,102 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+ipv6: false
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: ""
+bind-address: "*"
+unified-delay: true
+profile:
+  store-selected: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: redir-host
+  listen: 0.0.0.0:7874
+  nameserver:
+    - 8.8.8.8
+    - 1.0.0.1
+    - https://dns.google/dns-query
+  fallback:
+    - 1.1.1.1
+    - 8.8.4.4
+    - https://cloudflare-dns.com/dns-query
+    - 112.215.203.254
+  default-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+    - 112.215.203.254
+proxies:
+proxy-providers:
+  Server:
+    type: file
+    path: "./server.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+proxy-groups:
+- name: ADS
+  type: select
+  proxies:
+  - DIRECT
+  - REJECT
+- name: Chat
+  type: select
+  strategy: consistent-hashing
+  disable-udp: false
+  proxies:
+  - DIRECT
+  use:
+  - Server
+- name: Server
+  type: url-test
+  strategy: consistent-hashing
+  disable-udp: false
+  use:
+   - Server
+  url: http://www.gstatic.com/generate_204
+  interval: '300'
+  
+rules:
+- RULE-SET,Ads,ADS
+- RULE-SET,Direct,DIRECT
+- RULE-SET,Gaming,Server
+- RULE-SET,Reject,REJECT
+- RULE-SET,Sosmed,Server
+- RULE-SET,Stream,Server
+
+rule-providers:
+  Ads:
+    type: file
+    behavior: classical
+    path: "./ads.yaml"
+  Chat:
+    type: file
+    behavior: classical
+    path: "./direct.yaml"
+  Direct:
+    type: file
+    behavior: classical
+    path: "./direct.yaml"
+  Gaming:
+    type: file
+    behavior: classical
+    path: "./gaming.yaml"
+  Reject:
+    type: file
+    behavior: classical
+    path: "./reject.yaml"
+  Sosmed:
+    type: file
+    behavior: classical
+    path: "./sosmed.yaml"
+  Stream:
+    type: file
+    behavior: classical
+    path: "./stream.yaml"
