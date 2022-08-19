@@ -87,7 +87,7 @@ rules:
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
   - MATCH,Server
-  - GEOSITE,Ads
+  - GEOSITE,ADS
 rule-providers:
   18+:
     type: http
