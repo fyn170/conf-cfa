@@ -1,7 +1,6 @@
 # Online Config Subscribe
 # Clash For Android
 # Credits [fyn170](https://github.com/fyn170/conf-cfa)
----
 port: 7890
 socks-port: 7891
 redir-port: 7892
