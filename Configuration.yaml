@@ -80,7 +80,7 @@ proxy-groups:
   interval: '300'
 rules:
   - RULE-SET,18+,Server
-  - RULE-SET,Ads,Server
+  - RULE-SET,Ads,REJECT
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Gaming,Server
   - RULE-SET,Reject,REJECT
