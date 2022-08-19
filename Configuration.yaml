@@ -98,11 +98,6 @@ rule-providers:
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/ads.yaml"
     path: "./ads.yaml"
-  Chat:
-    type: http
-    behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/direct.yaml"
-    path: "./direct.yaml"
   Direct:
     type: http
     behavior: domain
