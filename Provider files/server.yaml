@@ -3,4 +3,4 @@
 # Credits [fyn170](https://github.com/fyn170/conf-cfa)
 ---
 proxies:
-  - {name: 🔴 Test, server: id-lb.sshkit.org, port: 443, type: vmess, uuid: 6fea1649-425b-4092-bf53-29792152c925, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, servername: meet.google.com, network: ws, ws-opts: {path: /sshkit/ahsj/62fe8ce3533f9/, headers: {Host: meet.google.com}}, udp: true}
+  - {name: sg-lb.vhax.net, server: www.udemy.com, port: 443, type: vmess, uuid: 6fea1649-425b-4092-bf53-29792152c925, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, servername: sg-lb.vhax.net, network: ws, ws-opts: {path: /sshkit/vavat/6335a57a736f7/, headers: {Host: sg-lb.vhax.net}}, udp: true}
