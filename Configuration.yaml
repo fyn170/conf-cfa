@@ -91,35 +91,35 @@ rule-providers:
   18+:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/ads.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/saru.yaml"
     path: "./saru.yaml"
   Ads:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/ads.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/ads.yaml"
     path: "./ads.yaml"
   Direct:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/direct.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/direct.yaml"
     path: "./direct.yaml"
   Gaming:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/gaming.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/gaming.yaml"
     path: "./gaming.yaml"
   Reject:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/reject.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/reject.yaml"
     path: "./reject.yaml"
   Sosmed:
     type: http
     behavior: classical
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/sosmed.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/sosmed.yaml"
     path: "./sosmed.yaml"
   Stream:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/stream.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/stream.yaml"
     path: "./stream.yaml"
