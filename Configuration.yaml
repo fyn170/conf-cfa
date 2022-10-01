@@ -85,7 +85,7 @@ rules:
   - RULE-SET,Reject,REJECT
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
-  - MATCH,GLOBAL
+  - MATCH,Server
 rule-providers:
   18+:
     type: http
