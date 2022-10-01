@@ -55,8 +55,8 @@ proxy-groups:
 - name: 18+
   type: select
   proxies:
-  - DIRECT
   - REJECT
+  - Server
 - name: ADS
   type: select
   proxies:
@@ -67,7 +67,7 @@ proxy-groups:
   strategy: consistent-hashing
   disable-udp: false
   proxies:
-  - DIRECT
+  - REJECT
   - Server
 - name: Server
   type: url-test
@@ -85,7 +85,7 @@ rules:
   - RULE-SET,Reject,REJECT
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
-  - MATCH,Server
+  - MATCH,GLOBAL
 rule-providers:
   18+:
     type: http
