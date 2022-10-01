@@ -44,14 +44,13 @@ dns:
 proxy-providers:
   Server:
     type: http
-    behavior: domain
+    behavior: classical
     url: "https://raw.githubusercontent.com/fyn170/conf-cfa/main/Provider%20files/server.yaml"
     path: "./server.yaml"
     health-check:
       enable: true
-      interval: 99
       url: http://www.gstatic.com/generate_204
-    interval: "300"
+      interval: 120
 proxy-groups:
 - name: 18+
   type: select
@@ -93,33 +92,61 @@ rule-providers:
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/saru.yaml"
     path: "./saru.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
   Ads:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/ads.yaml"
     path: "./ads.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
   Direct:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/direct.yaml"
     path: "./direct.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
   Gaming:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/gaming.yaml"
     path: "./gaming.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
   Reject:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/reject.yaml"
     path: "./reject.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
   Sosmed:
     type: http
     behavior: classical
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/sosmed.yaml"
     path: "./sosmed.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
   Stream:
     type: http
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/stream.yaml"
     path: "./stream.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
