@@ -1,6 +1,7 @@
 # Online Config Subscribe
 # Clash For Android
 # Credits [fyn170](https://github.com/fyn170/conf-cfa)
+---
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -61,7 +62,7 @@ proxy-groups:
   type: select
   proxies:
   - REJECT
-  - Server
+  - DIRECT
 - name: Chat
   type: select
   strategy: consistent-hashing
@@ -78,8 +79,8 @@ proxy-groups:
   url: http://www.gstatic.com/generate_204
   interval: '300'
 rules:
-  - RULE-SET,18+,Server
-  - RULE-SET,Ads,REJECT
+  - RULE-SET,18+,18+
+  - RULE-SET,Ads,ADS
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Gaming,Server
   - RULE-SET,Reject,REJECT
