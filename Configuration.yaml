@@ -68,7 +68,7 @@ proxy-groups:
   strategy: consistent-hashing
   disable-udp: false
   proxies:
-  - REJECT
+  - DIRECT
   - Server
 - name: Server
   type: url-test
@@ -77,7 +77,7 @@ proxy-groups:
   use:
   - Server
   url: http://www.gstatic.com/generate_204
-  interval: '300'
+  interval: "120"
 rules:
   - RULE-SET,18+,18+
   - RULE-SET,Ads,ADS
