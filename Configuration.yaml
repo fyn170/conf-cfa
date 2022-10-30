@@ -43,11 +43,29 @@ dns:
    - 8.8.8.8
    - 8.8.4.4
 proxy-providers:
-  Server:
+  AXIS:
     type: http
     behavior: classical
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/akun.yaml"
-    path: "./server.yaml"
+    path: "./axis.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/axis.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+  TSEL:
+    type: http
+    behavior: classical
+    path: "./tsel.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/tsel.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+  XL:
+    type: http
+    behavior: classical
+    path: "./exel.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/exel.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -70,18 +88,47 @@ proxy-groups:
   proxies:
   - DIRECT
   - Server
-- name: Server
-  type: url-test
+- name: AXIS🟣
+  type: fallback
   strategy: consistent-hashing
   disable-udp: false
   use:
-  - Server
-  url: http://www.gstatic.com/generate_204
-  interval: "120"
+  - AXIS
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+- name: TSEL🔴
+  type: fallback
+  strategy: consistent-hashing
+  disable-udp: false
+  use:
+  - TSEL
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+- name: XL🔵
+  type: fallback
+  strategy: consistent-hashing
+  disable-udp: false
+  use:
+  - XL
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+- name: Server
+  type: select
+  strategy: consistent-hashing
+  disable-udp: false
+  proxies:
+  - AXIS🟣
+  - TSEL🔴
+  - XL🔵
 rules:
   - RULE-SET,18+,18+
   - RULE-SET,Ads,ADS
-  - RULE-SET,Direct,DIRECT
   - RULE-SET,Gaming,Server
   - RULE-SET,Reject,REJECT
   - RULE-SET,Sosmed,Server
@@ -102,15 +149,6 @@ rule-providers:
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/ads.yaml"
     path: "./ads.yaml"
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 120
-  Direct:
-    type: http
-    behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/direct.yaml"
-    path: "./direct.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
