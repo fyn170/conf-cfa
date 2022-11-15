@@ -133,7 +133,7 @@ rules:
   - RULE-SET,Reject,REJECT
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
-  - MATCH,Server
+  - MATCH,GLOBAL
 rule-providers:
   18+:
     type: http
