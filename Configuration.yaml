@@ -89,7 +89,7 @@ proxy-groups:
   - DIRECT
   - Server
 - name: AXIS🟣
-  type: fallback
+  type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
@@ -99,7 +99,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
 - name: TSEL🔴
-  type: fallback
+  type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
@@ -109,7 +109,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
 - name: XL🔵
-  type: fallback
+  type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
