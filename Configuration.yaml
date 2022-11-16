@@ -28,10 +28,12 @@ dns:
   nameserver:
   - 8.8.8.8
   - 8.8.4.4
-  - https://dns.adguard.com/dns-query
-  - https://dns-google.com/dns-query
-  - tls://dns.adguard.com
-  - tls://dns-google.com/
+  - 94.140.14.14
+  - 94.140.15.15
+  - https://dns.adguard-dns.com/dns-query
+  - https://dns.google/dns-query
+  - tls://dns.adguard-dns.com
+  - tls://dns.google
   enable: true
   ipv6: false
   enhanced-mode: redir-host
@@ -40,8 +42,10 @@ dns:
   fake-ip-filter:
   - "+.*"
   default-nameserver:
-   - 8.8.8.8
-   - 8.8.4.4
+  - 8.8.8.8
+  - 8.8.4.4
+  - 94.140.14.14
+  - 94.140.15.15
 proxy-providers:
   AXIS:
     type: http
@@ -76,7 +80,7 @@ proxy-groups:
   proxies:
   - REJECT
   - Server
-- name: ADS
+- name: Ads
   type: select
   proxies:
   - REJECT
@@ -128,12 +132,12 @@ proxy-groups:
   - XL🔵
 rules:
   - RULE-SET,18+,18+
-  - RULE-SET,Ads,ADS
+  - RULE-SET,Ads,Ads
   - RULE-SET,Gaming,Server
   - RULE-SET,Reject,REJECT
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
-  - MATCH,GLOBAL
+  - MATCH,Server
 rule-providers:
   18+:
     type: http
