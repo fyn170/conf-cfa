@@ -134,7 +134,7 @@ rules:
   - RULE-SET,18+,18+
   - RULE-SET,Ads,Ads
   - RULE-SET,Gaming,Server
-  - RULE-SET,Reject,REJECT
+  - RULE-SET,Olshop,Server
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
   - MATCH,Server
@@ -166,11 +166,11 @@ rule-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 120
-  Reject:
+  Olshop:
     type: http
     behavior: domain
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/reject.yaml"
-    path: "./reject.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/olshop.yaml"
+    path: "./olshop.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
