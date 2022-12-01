@@ -65,11 +65,20 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 120
-  XL:
+  XL-1:
     type: http
     behavior: classical
-    path: "./exel.yaml"
-    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/exel.yaml"
+    path: "./exel1.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/exel1.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+  XL-2:
+    type: http
+    behavior: classical
+    path: "./exel2.yaml"
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/akun/exel2.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -112,12 +121,22 @@ proxy-groups:
     enable: true
     url: http://www.gstatic.com/generate_204
     interval: 300
-- name: XL🔵
+- name: XL-1🔵
   type: load-balance
   strategy: consistent-hashing
   disable-udp: false
   use:
-  - XL
+  - XL-1
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+- name: XL-2🔵
+  type: load-balance
+  strategy: consistent-hashing
+  disable-udp: false
+  use:
+  - XL-2
   health-check:
     enable: true
     url: http://www.gstatic.com/generate_204
@@ -129,12 +148,14 @@ proxy-groups:
   proxies:
   - AXIS🟣
   - TSEL🔴
-  - XL🔵
+  - XL-1🔵
+  - XL-2🔵
 rules:
   - RULE-SET,18+,18+
   - RULE-SET,Ads,Ads
   - RULE-SET,Gaming,Server
   - RULE-SET,Olshop,Server
+  - RULE-SET,Reject,REJECT
   - RULE-SET,Sosmed,Server
   - RULE-SET,Stream,Server
   - MATCH,Server
@@ -171,6 +192,15 @@ rule-providers:
     behavior: domain
     url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/olshop.yaml"
     path: "./olshop.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 120
+  Reject:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/fyn170/conf-cfm/main/confs/rule/reject.yaml"
+    path: "./reject.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
